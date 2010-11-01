@@ -1,0 +1,8 @@
+{
+	"sLengthMenu": "Mostrar _MENU_ registros por página",
+	"sZeroRecords": "No se encontraron registros.",
+	"sInfo": "Mostrando desde  _START_ hasta _END_ de _TOTAL_ registros.",
+	"sInfoEmtpy": "Mostrando 0 hasta 0 de 0 registros.",
+	"sInfoFiltered": "(filtrado de un total de _MAX_  registros)",
+	"sSearch": "Buscar"
+}

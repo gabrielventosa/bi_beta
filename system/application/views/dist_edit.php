@@ -1,0 +1,155 @@
+<html>
+<head>
+<title><?=$title?></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv='expires' content='-1' />
+<meta http-equiv= 'pragma' content='no-cache' />
+
+
+<!-- Google MAPS API-->
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=ABQIAAAA6VPcVzDMqz0sgSNQ1nNpJhT7iu-aH7t0l1YuL6uiYulVE1zxKhT36G3r3dKUgE_qEAxV1PeJDsK8kA" type="text/javascript"></script>
+
+<!--- Jquery-->
+<link type="text/css" href="<?php echo base_url();?>js/jquery-ui-1.7.2.custom/css/ui-lightness/jquery-ui-1.7.2.custom.css" rel="stylesheet" />
+<script type="text/javascript" src="<?php echo base_url();?>js/jquery-ui-1.7.2.custom/js/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>js/jquery-ui-1.7.2.custom/js/jquery-ui-1.7.2.custom.min.js"></script> 
+<!--- Jquery--->
+<!--- JQuery Google MAPS --> 
+<script type="text/javascript" src="<?php echo base_url();?>js/jquery.googlemaps/jquery.googlemaps1.01.js"></script>
+
+<!--- Style --->
+<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>styles/edit_style.css"/>
+<style type="text/css">
+			/*demo page css*/
+			body{ font: 62.5% "Trebuchet MS", sans-serif; margin: 50px;}
+			.demoHeaders { margin-top: 2em; }
+			#dialog_link {padding: .4em 1em .4em 20px;text-decoration: none;position: relative;}
+			#dialog_link span.ui-icon {margin: 0 5px 0 0;position: absolute;left: .2em;top: 50%;margin-top: -8px;}
+			#ShowHideMarkers {padding: .4em 1em .4em 20px;text-decoration: none;position: relative;}
+			#ShowHideMarkers span.ui-icon {margin: 0 5px 0 0;position: absolute;left: .2em;top: 50%;margin-top: -8px;}
+			#ReturnButton {padding: .4em 1em .4em 20px;text-decoration: none;position: relative;}
+			#ReturnButton span.ui-icon {margin: 0 5px 0 0;position: absolute;left: .2em;top: 50%;margin-top: -8px;}
+			ul#icons {margin: 0; padding: 0;}
+			ul#icons li {margin: 2px; position: relative; padding: 4px 0; cursor: pointer; float: left;  list-style: none;}
+			ul#icons span.ui-icon {float: left; margin: 0 4px;}
+		</style>
+<script type="text/javascript">
+		
+	$(function() { 
+		$('#map_dialog').dialog({autoOpen: false,
+					 width: 'auto',
+					 height: 'auto'});
+
+	
+		$('#ShowMap').click(function(){
+			if($('#lat').val() == '' && $('#lng').val() == ''){
+				var position =$('#anumero').val() +' '+ $('#adireccion').val() +', '+$('#aciudad').val() +', '+$('#aestado').val()+', '+$('#acp').val()+', MEXICO';
+				var geocoder = new GClientGeocoder();
+				geocoder.getLatLng(position, function(center){
+					if(!center){
+						center = new GLatLng(19.43240,-99.13294);
+					}
+				
+				var lat=center.lat();
+				var lng=center.lng();
+				$('#map_dialog').dialog('open');
+				$('#map_canvas').googleMaps({
+					 geocode: position, 
+					 markers: {
+					 latitude: lat,
+					 longitude: lng,
+					 draggable: true,
+					 listener: true,
+					 eventname: 'dragend',
+					 controller: function(latlong){
+						 $('#lat').val(latlong.lat());
+						 $('#lng').val(latlong.lng());
+							 }
+						} 
+					});
+			
+				});
+			}else{
+				var lat=$('#lat').val();
+				var lng=$('#lng').val();
+				$('#map_dialog').dialog('open');
+				$('#map_canvas').googleMaps({
+					latitude: lat,
+					longitude: lng,
+					markers: {
+						latitude: lat,
+						longitude: lng,
+						draggable: true,
+						listener: true,
+						eventname: 'dragend',
+						controller: function(latlong){
+							$('#lat').val(latlong.lat());
+							$('#lng').val(latlong.lng());
+								}
+					}
+				});
+			}
+
+		});
+			
+		
+	}); 
+
+</script>
+</head>
+<body>
+<?php echo $header; ?>
+<?php echo $menu; ?>
+<div id="center_div" class="center_div">
+
+	<h1 id="header_left"><?=$heading?></h1>
+	<?php if ($query->num_rows() >0): ?>
+	<?php foreach($query->result() as $row): ?>
+	<?=form_open('dist/save');?>
+	<?=form_hidden('id', $this->uri->segment(3));?>
+
+		<table>
+			<tbody>
+				<tr><td>NUMERO: </td><td><input type="text"  class="input" name="id" value="<?=$row->id?>" DISABLED/></td></tr>
+				<tr><td>NOMBRE: </td><td><input type="text" class="input" name="nombre" value="<?=$row->nombre?>"/></td></tr>
+				<tr><td>ZONA: </td><td><select  name="zona" class="select"/>
+					<?php foreach($zonas->result() as $zona): ?>
+						<OPTION value="<?=$zona->id?>" 
+						<?php if($row->zona == $zona->id): ?>
+								selected
+								<?php endif;?> /><?=$zona->nombre?>
+					<?php endforeach; ?>
+					</select></td></tr>
+				<tr><td>CIUDAD: </td><td><input id='aciudad' type="text" class="input" name="ciudad" value="<?=$row->ciudad?>"/></td></tr>
+				<tr><td>ESTADO: </td><td><input id='aestado' type="text" class="input" name="estado" value="<?=$row->estado?>"/></td></tr>
+				<tr><td>DIRECCI&Oacute;N: </td><td><input id='adireccion'  type="text" class="input" name="direccion" value="<?=$row->direccion?>"/></td></tr>
+				<tr><td>NUMERO: </td><td><input id = 'anumero' type="text" class="input" name="Numero" value="<?=$row->Numero?>"/></td></tr>
+				<tr><td>INTERIOR: </td><td><input type="text" class="input" name="interior" value="<?=$row->interior?>"/></td></tr>
+				<tr><td>CRUZAMIENTO: </td><td><input type="text" class="input" name="cruzamiento" value="<?=$row->cruzamiento?>"/></td></tr>
+				<tr><td>CP: </td><td><input id='acp' type="text" class="input" name="cp" value="<?=$row->cp?>"/></td></tr>
+				<tr><td>TIPO: </td><td><input type="text" class="input" name="tipo" value="<?=$row->tipo?>"/></td></tr> <!---
+				<tr><td>Latitud: </td><td><input id='lat'  type="hidden" class="input" name="latitud" value="<?=$row->latitud?>"/></td></tr>
+				<tr><td>Longitud: </td><td><input id='lng'  type="hidden" class="input" name="longitud" value="<?=$row->longitud?>"/></td></tr> -->
+			</tbody>
+		</table>
+		<p>
+		<input id='lat'  type="hidden" class="input" name="latitud" value="<?=$row->latitud?>"/>
+		<input id='lng'  type="hidden" class="input" name="longitud" value="<?=$row->longitud?>"/>
+		<input type ="submit" class="submit" value="Guardar"/>
+		<input type ="button" class="submit" value="Mapa" id="ShowMap"/>
+		</p>
+	</form>
+	<?php endforeach; ?>
+	<?php else: ?>
+	<p>No hay distribuidores definidos</p>
+	<?php endif; ?>
+</div>
+<div id="map_dialog" title="MAPA">
+<div id="map_canvas" class="center_div" style="width:500px; height: 300px; position:relative; background-color:rgb(229,227,223);">
+</div>
+</div>
+<div id="footer">
+<?=$footer?>
+</div>
+</body>
+</html>

@@ -1,0 +1,239 @@
+body {
+ margin: 0;
+ padding: 0;
+ font-family: Lucida Grande, Verdana, Geneva, Sans-serif;
+ font-size: 6px;
+ color: #4F5155;
+/* background: #fff url(http://www.inteligenciamecanica.com/ci/system/scaffolding/images/background.jpg) repeat-x left top; */
+}
+
+a {
+ color: #8B0D00;
+ background-color: transparent;
+ text-decoration: none;
+ font-weight: bold;
+}
+
+a:visited {
+ color: #8B0D00;
+ background-color: transparent;
+ text-decoration: none;
+}
+
+a:hover {
+ color: #000;
+ text-decoration: none;
+ background-color: transparent;
+}
+
+
+#header {
+ margin: 0;
+ padding: 0;
+}
+
+#header a {
+ color: #000;
+ background-color: transparent;
+ text-decoration: none;
+ font-weight: bold;
+}
+
+#header a:visited {
+ color: #000;
+ background-color: transparent;
+ text-decoration: none;
+}
+
+#header a:hover {
+ color: #000;
+ text-decoration: none;
+ background-color: transparent;
+}
+
+#header_left {
+ background-color: transparent;
+ padding: 5px 0 5px 32px;
+ margin: 0
+}
+
+#header_right {
+ background-color: transparent;
+ float: right;
+ text-align: right;
+ padding: 35px 50px 20px 0;
+ margin: 0
+}
+
+#outer {
+ margin: 30px 40px 0 40px;
+}
+
+img {
+ padding:0;
+ border: 0;
+ margin: 0;
+}
+
+.nopad {
+ padding:0;
+ border: 0;
+ margin: 0;
+}
+
+table {
+ background-color: #efefef;
+}
+
+th {
+ background-color: #eee;
+ font-weight: bold;
+ padding: 6px;
+ text-align: left;
+}
+
+td {
+ background-color: #fff;
+ padding: 6px;
+ font-family: Lucida Grande, Verdana, Geneva, Sans-serif;
+ font-size: 12px;
+ text-transform: uppercase;
+}
+
+
+form {
+ margin: 0;
+ padding: 0;
+}
+
+.input {
+ font-family: Lucida Grande, Verdana, Geneva, Sans-serif;
+ font-size: 12px;
+ width: 600px;
+ color: #333;
+ border: 1px solid #B3B4BD;
+ font-size: 10px;
+ height: 2em;
+ padding: 0;
+ margin: 0;
+text-transform: uppercase;
+}
+
+.date_input {
+ font-family: Lucida Grande, Verdana, Geneva, Sans-serif;
+ font-size: 12px;
+ width: 600px;
+ color: #333;
+ border: 1px solid #B3B4BD;
+ font-size: 10px;
+ height: 2em;
+ padding: 0;
+ margin: 0;
+text-transform: uppercase;
+}
+
+.textarea {
+ font-family: Lucida Grande, Verdana, Geneva, Sans-serif;
+ font-size: 12px;
+ width: 600px;
+ color: #333;
+ border: 1px solid #B3B4BD;
+ padding: 0;
+ margin: 0;
+}
+
+.select {
+ background-color: #fff;
+ font-size:  10px;
+ font-weight: normal;
+ color: #333;
+ padding: 0;
+ margin: 0 0 3px 0;
+text-transform: uppercase;
+}
+
+option {
+ background-color: #fff;
+ font-size:  10px;
+ font-weight: normal;
+ color: #333;
+ padding: 0;
+ margin: 0 0 3px 0;
+text-transform: uppercase;
+}
+
+.checkbox {
+ background-color: transparent;
+ padding: 0;
+ border: 0;
+}
+
+.submit {
+  position: relative;
+  background-color: #8B0D00;
+  color: #FFF;
+  font-weight: normal;
+  border: 1px solid #000;
+  margin: 10px 0px 10px 10px;
+  padding: 1px 5px 1px 5px;  
+  /* margin-left: 650px; */
+ float: right; 
+}
+
+.center_div {
+border-width: 2px;
+border-style: solid; 
+border-color: gray;
+width: 800px;
+margin-left: auto;
+margin-right: auto;
+margin-top: 100px;
+}
+
+.spacer {
+height: 5px;
+clear:both;
+}
+
+#siteNav { background: #DE2600 top left no-repeat;	
+width: 100%;
+margin: 0;
+padding: 0;
+}
+
+#siteNav a { text-decoration: none; display: block;	}
+
+#siteNav ul { margin-left: 15px; padding-top: 4px;	}
+	#siteNav ul:after { content: "."; display: block; height: 0; clear: both; visibility: hidden;	}
+
+#siteNav li { float: left; position: relative; font-size: 12px; text-align: center; list-style-type: none;	}
+	#siteNav li a { padding: 8px 12px 8px 12px;	}
+	#siteNav li a:link, #siteNav li a:visited { background: transparent url(../images/design/site_nav_borders.gif) bottom right no-repeat; color: #fff;	}
+	#siteNav li a:hover { background: #EE724A url(../images/design/site_nav_hover_bg.gif) bottom left repeat-x; color: #fff;	}
+	#siteNav li.current a { margin-bottom: -1px;	}
+	#siteNav li.current a:link ,#siteNav li.current a:hover { background-color: #ffffff; background-image: none; cursor: default; color: #37454e; border-bottom: 1px solid #fff;	}
+
+
+/* Footer */
+
+#footer
+{
+bottom: 0px;
+width: 100%;
+margin: 0 auto;
+text-align: center;
+clear: both;
+border-top: dotted 1px #E1E1E1;
+margin-top: 1.0em;
+margin-bottom: 1.5em;
+padding-top: 1.0em;
+text-transform: lowercase;
+}
+
+#footer p 
+{
+ font-size: 10px;
+ color: #999;
+ text-align: center;
+}
+
